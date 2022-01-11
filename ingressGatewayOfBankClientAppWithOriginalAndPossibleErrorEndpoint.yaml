@@ -1,0 +1,66 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: ingress-gateway
+spec:
+  selector:
+    istio: ingressgateway 
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: vs-ingress-gateway
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - ingress-gateway
+  http:
+  - match:
+    - uri:
+        exact: /users
+    route:
+    - destination:
+        host: bank-client-app
+        port:
+          number: 80
+  - match:
+    - uri:
+        exact: /users-possible-bad-gateway
+    route:
+    - destination:
+        host: bank-client-app
+        port:
+          number: 80
+  - match:
+    - uri:
+        exact: /users-bad-gateway
+    route:
+    - destination:
+        host: bank-client-app
+        port:
+          number: 80
+  - match:
+    - uri:
+        exact: /validate
+    route:
+    - destination:
+        host: user-validator-service
+        port:
+          number: 80
+  - match:
+    - uri:
+        exact: /get-test
+    route:
+    - destination:
+        host: user-validator-service
+        port:
+          number: 80
+

@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: vs-retry-user-validator-service
+spec:
+  hosts:
+  - user-validator-service
+  http:
+  - route:
+    - destination:
+        host: user-validator-service
+    retries:
+      attempts: 5
+      perTryTimeout: 1s
+      retryOn: gateway-error
+
+
