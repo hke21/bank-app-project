@@ -200,7 +200,7 @@ public class HttpClient {
                     .toEntity(Boolean.class)
                     .block();
         } catch (WebClientResponseException exception) {
-            logger.info("user-validator-service responded with 502 BAD_GATEWAY");
+            logger.info("user-validator-service responded with " + exception.getStatusCode());
             return ResponseEntity.status(exception.getStatusCode()).build();
         }
 
