@@ -102,7 +102,7 @@ public class UserController {
         if (user.getPhoneNumber() != null) {
             response = userService.validateUserRegistrationWithError(user);
             if(!response.getStatusCode().equals(HttpStatus.OK)) {
-                logger.info("Responsing to the request with the bad gateway status code");
+                logger.info("Responding to the request with the status code");
 
                 return ResponseEntity.status(response.getStatusCode()).build();
             }
