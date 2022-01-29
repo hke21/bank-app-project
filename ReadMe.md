@@ -11,7 +11,7 @@ Timeout (and fault injection with delay)
 1. Run ‘kubectl apply -f delayForTimeout.yaml’ to introduce a delay between services
 2. Run ‘kubectl apply -f timeout.yaml’
 3. Check in Kiali if both configurations are applied
-￼
+![alt text](https://github.com/hke21/bank-app-project/blob/main/assets/1.png?raw=true)
 4. Make a request in Postman and check response status code
 ￼
 
