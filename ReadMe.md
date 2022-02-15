@@ -1,6 +1,8 @@
 1. Start docker desktop
 2. run ‘minikube start’
-3. run ‘kubectl get all’ to check that pods are running 
+3. run ‘kubectl apply -f deployments.yaml’
+4. run ‘kubectl get all’ to check that pods are running 
+5. run ‘kubectl apply -f ingressGateway.yaml’
 
 Load balancing
 1. Run ‘kubectl apply -f deploymentsWith3Pods.yaml’ to have 3 pods of user-validator-service
